@@ -7,7 +7,12 @@
 <body>
     <form method="POST" class="post-form">{% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Save</button>
+        <button type="submit">Generate</button>
     </form>
+    {% if messages %}
+        {% for message in messages %}
+            <a target="_blank" href="{{ message }}">{{ message }}</a>
+        {% endfor %}
+    {% endif %}
 </body>
 </html>
