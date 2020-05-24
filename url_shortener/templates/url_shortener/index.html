@@ -1,18 +1,31 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="{% static 'url_shortener/css/index.css' %}">
 </head>
 <body>
-    <form method="POST" class="post-form">{% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Generate</button>
-    </form>
+    <div class="form-container">
+        <h1>URL Shortener</h1>
+        <form method="POST" class="post-form">{% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Generate</button>
+        </form>
+    </div>
     {% if messages %}
         {% for message in messages %}
-            <a target="_blank" href="{{ message }}">{{ message }}</a>
+            <div id="link-container">
+                <a id="link" target="_blank" href="{{ message }}">{{ message }}</a>
+            </div>
         {% endfor %}
     {% endif %}
+
+    <div id="div-footer-container">
+        <div id="div-footer">
+            Author: <a target="_blank" href="https://github.com/flizz15">flizz15</a>
+        </div>
+    </div>
 </body>
 </html>

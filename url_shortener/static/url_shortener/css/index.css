@@ -1,0 +1,51 @@
+body {
+	background: #005C97;  /* fallback for old browsers */
+	background: -webkit-linear-gradient(to right, #005597, #005758);  /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to right, #005597, #005758); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	margin: 0;
+	font-family: 'Roboto', sans-serif;
+	color: white;
+}
+
+input {
+	background-color: #ffffff;
+	border: none;
+	width: 500px;
+	height: 30px;
+	padding: 10px;
+	outline: none;
+	border-radius: 50px;
+	box-shadow: none;
+}
+
+a {
+	color: white;
+}
+
+#link {
+	font-size: 2em;
+	text-decoration: none;
+}
+
+
+#link-container {
+	margin-top: 1%;
+	text-align: center;
+}
+
+#div-footer-container {
+	display: flex;
+	justify-content: center;
+}
+
+#div-footer {
+	position: absolute;
+	bottom: 0;
+	margin-bottom: 1%;
+	font-size: 1.2em;
+}
+
+.form-container {
+    margin-top: 18%;
+	text-align: center;
+}

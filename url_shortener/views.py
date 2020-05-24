@@ -13,11 +13,10 @@ def index(request):
         if form.is_valid():
             link = form.save(commit=False)
             link.short_link = hashlib.md5(link.link.encode("UTF-8")).hexdigest()[:8]
+            messages.success(request, 'http://127.0.0.1:8000/' + link.short_link)
             if ShortLink.objects.filter(short_link=link.short_link):
-                messages.success(request, 'http://127.0.0.1:8000/' + link.short_link)
                 return redirect('index')
             link.save()
-            messages.success(request, 'http://127.0.0.1:8000/'+link.short_link)
             return redirect('index')
     else:
         form = ShortLinkForm()
