@@ -4,7 +4,11 @@ from django.contrib import messages
 
 from .forms import ShortLinkForm
 from .models import ShortLink
-import hashlib
+
+from django_url_shortener.settings import BASE_URL
+
+import string
+import random
 
 
 def index(request):
@@ -12,11 +16,22 @@ def index(request):
         form = ShortLinkForm(request.POST)
         if form.is_valid():
             link = form.save(commit=False)
-            link.short_link = hashlib.md5(link.link.encode("UTF-8")).hexdigest()[:8]
-            messages.success(request, 'http://127.0.0.1:8000/' + link.short_link)
-            if ShortLink.objects.filter(short_link=link.short_link):
-                return redirect('index')
-            link.save()
+            chars = string.ascii_letters + string.digits
+
+            while True:
+                link.short_link = ''.join(random.choice(chars) for _ in range(6))
+                if not ShortLink.objects.filter(short_link=link.short_link):
+                    break
+
+            data_link = ShortLink.objects.filter(link=link.link)
+
+            if data_link:
+                link.short_link = data_link[0].short_link
+            else:
+                link.save()
+
+            messages.success(request, BASE_URL+link.short_link)
+
             return redirect('index')
     else:
         form = ShortLinkForm()
