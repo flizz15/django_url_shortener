@@ -25,7 +25,7 @@ SECRET_KEY = 'v8vgj6lx_-axy=3chj+#)s8l7ud^ti_m#x0q$8dfvw4hm+6wsf'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['django-url-shortener.azurewebsites.net']
 
 
 # Application definition
